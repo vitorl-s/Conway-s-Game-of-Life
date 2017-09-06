@@ -1,9 +1,13 @@
 #include "matriz.hpp"
+#include <iostream>
 
 Matriz::Matriz(){
-  char matriz[0][0] ;
+  char matriz[0][0];
   int quantidade_linhas=0 ;
   int quantidade_colunas=0 ;
+  int geracoes = 0;
+  int cel_viva = 1;
+  int cel_morta = 0;
 }
 
 int Matriz::getLinhas(){
@@ -28,4 +32,22 @@ void Matriz::insere_Colunas(){
 
 void Matriz::cria_Matriz(){
   matriz [quantidade_linhas][quantidade_colunas];
+  }
+
+void Matriz::imprime_matriz(){
+  int linhas = getLinhas();
+  int colunas = getColunas();
+
+  for(int i=0 ; i<linhas ; i++){
+    for(int j=0; j<colunas ; j++){
+      cin >> matriz[i][j] ;
+    }
+  }
+
+  for(int i=0 ; i<linhas ; i++){
+    for(int j=0; j<colunas ; j++){
+      cout << matriz[i][j] ;
+    }
+  }
+
 }
