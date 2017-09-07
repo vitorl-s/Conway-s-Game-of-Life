@@ -9,7 +9,10 @@ matriz1.insere_Linhas();
 matriz1.insere_Colunas();
 matriz1.cria_Matriz();
 matriz1.imprime_matriz();
-
+matriz1.verifica_regras();
+matriz1.imprime_matriz();
+matriz1.verifica_regras();
+matriz1.imprime_matriz();
 
 
 

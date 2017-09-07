@@ -2,12 +2,12 @@
 #include <iostream>
 
 Matriz::Matriz(){
-  char matriz[0][0];
-  int quantidade_linhas=0 ;
-  int quantidade_colunas=0 ;
-  int geracoes = 0;
-  int cel_viva = 1;
-  int cel_morta = 0;
+   matriz[0][0];
+   quantidade_linhas=0 ;
+   quantidade_colunas=0 ;
+   geracoes = 0;
+   cel_viva = 1;
+   cel_morta = 0;
 }
 
 int Matriz::getLinhas(){
@@ -32,9 +32,7 @@ void Matriz::insere_Colunas(){
 
 void Matriz::cria_Matriz(){
   matriz [quantidade_linhas][quantidade_colunas];
-  }
 
-void Matriz::imprime_matriz(){
   int linhas = getLinhas();
   int colunas = getColunas();
 
@@ -44,9 +42,51 @@ void Matriz::imprime_matriz(){
     }
   }
 
+}
+
+void Matriz::imprime_matriz(){
+  int linhas = getLinhas();
+  int colunas = getColunas();
+
+cout << "\n";
+
+
   for(int i=0 ; i<linhas ; i++){
     for(int j=0; j<colunas ; j++){
       cout << matriz[i][j] ;
+    }
+    cout << "\n";
+  }
+
+}
+
+void Matriz::verifica_regras(){
+  int linhas = getLinhas();
+  int colunas = getColunas();
+  int vizinhos =0;
+
+  for(int i=0;i<linhas;i++){
+    for(int j=0;j<colunas;j++){
+      for(int k=0;k<3;k++){
+        for(int l=0; l<3; l++){
+          if(matriz[i+k][j+l] == 'o'){
+            vizinhos++;
+          }
+        }
+      }
+        if(vizinhos < 2){
+          matriz[i][j] = '-';
+        }
+        if(vizinhos > 3){
+          matriz[i][j] = '-';
+        }
+        if(vizinhos == 3 && matriz[i][j] == '-' ){
+          matriz[i][j] = 'o';
+        }
+        if((vizinhos == 2 || vizinhos == 3) && matriz[i][j] == 'o'){
+          matriz[i][j] = 'o';
+        }
+        vizinhos =0;
     }
   }
 
