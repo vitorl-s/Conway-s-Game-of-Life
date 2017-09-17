@@ -12,24 +12,24 @@ class Matriz{
     char prox_geracao[80][80];
     int quantidade_linhas;
     int quantidade_colunas;
-    int geracoes;
-    bool cel_viva;
-    bool cel_morta;
-
-
-  public:
-    Matriz();
-    
-
     int jogo_desejado;
     int quantidade_geracoes;
-    int escolher_forma();
+  public:
+    Matriz();
+
+    void menu();
     void insere_Linhas();
+    void insere_Linhas(int quantidade_linhas);
     int  getLinhas();
     void insere_Colunas();
+    void insere_Colunas(int quantidade_colunas);
     int getColunas();
+    int getJogo();
+    void setJogo();
+    int getGeracoes();
+    void setGeracoes();
     void cria_Matriz();
-    void cria_Matriz(int linhas, int colunas , int jogo_desejado);
+    void cria_Matriz(int jogo_desejado);
     int conta_vizinhos(int i , int j);
     void inserir_celula(int i , int j , char estado);
     void nova_geracao();

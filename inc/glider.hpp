@@ -6,4 +6,4 @@ class Glider:public Matriz{
   public:
     Glider();
     ~Glider();
-}
+};

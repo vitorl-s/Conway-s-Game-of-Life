@@ -6,4 +6,4 @@ class Blinker:public Matriz{
   public:
     Blinker();
     ~Blinker();
-}
+};
