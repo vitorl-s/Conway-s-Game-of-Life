@@ -2,9 +2,9 @@
 #include <iostream>
 
 Matriz::Matriz(){
-   quantidade_linhas= 30 ;
-   quantidade_colunas= 30 ;
-   quantidade_geracoes = 30;
+   quantidade_linhas= 1 ;
+   quantidade_colunas= 1 ;
+   quantidade_geracoes = 1;
 }
 
 void Matriz::menu(){
@@ -71,8 +71,6 @@ void Matriz::setGeracoes(){
 void Matriz::cria_Matriz(){
 
   if(getJogo() == 5){
-    matriz [quantidade_linhas][quantidade_colunas];
-
     int linhas = getLinhas();
     int colunas = getColunas();
 
@@ -81,12 +79,10 @@ void Matriz::cria_Matriz(){
         cin >> matriz[i][j] ;
       }
     }
-
   }
 }
 
 void Matriz::cria_Matriz(int jogo_desejado){
-    getJogo();
 
     if(jogo_desejado == 4){
       insere_Linhas(40);
@@ -99,9 +95,11 @@ void Matriz::cria_Matriz(int jogo_desejado){
     int linhas = getLinhas();
     int colunas = getColunas();
 
-    for(int i=0 ; i<linhas ; i++){
-      for(int j=0; j<colunas ; j++){
-        matriz[i][j] = '-' ;
+    if(jogo_desejado != 5){
+      for(int i=0 ; i<linhas ; i++){
+        for(int j=0; j<colunas ; j++){
+          matriz[i][j] = '-' ;
+        }
       }
     }
     if(jogo_desejado == 1){
@@ -182,7 +180,6 @@ void Matriz::imprime_matriz(){
   int linhas = getLinhas();
   int colunas = getColunas();
 
-
   if(jogo_desejado != 5){
     linhas = 20;
     colunas = 20;
@@ -190,9 +187,7 @@ void Matriz::imprime_matriz(){
     linhas = 27;
     colunas = 40;
   }
-
   cout << "\n";
-
 
   for(int i=0 ; i<linhas ; i++){
     for(int j=0; j<colunas ; j++){
@@ -201,8 +196,6 @@ void Matriz::imprime_matriz(){
     }
     cout << "\n";
   }
-
-
 }
 
 int Matriz::conta_vizinhos(int i, int j){
@@ -226,8 +219,6 @@ int Matriz::conta_vizinhos(int i, int j){
  if (matriz[i+1][j+1] == 'o')
    vizinhos++;
 
-
-
   return vizinhos;
 }
 
@@ -237,52 +228,40 @@ void Matriz::inserir_celula(int i , int j , char estado){
     prox_geracao[i][j] = 'o';
   else
     prox_geracao[i][j] = '-';
-
 }
-
 
 void Matriz::nova_geracao(){
   int linhas = getLinhas();
- int colunas = getColunas();
- inti=0;
- int j=0;
-
- for(i=0;i<linhas;i++){
-   for(j=0;j<colunas;j++){
-     if(matriz[i][j] == 'o'){
-       if (conta_vizinhos(i,j) < 2)
-         inserir_celula(i,j,'-');
-     else if (conta_vizinhos(i,j) > 3)
-         inserir_celula(i,j,'-');
-     else
-         inserir_celula(i,j,'o');
-     }
-     else{
-       if (conta_vizinhos(i,j) == 3)
-         inserir_celula(i,j,'o');
-         else
-         inserir_celula(i,j,'-');
-     }
-   }
- }
-
-
-
+  int colunas = getColunas();
+  int j= 0;
+  int i= 0;
+  for(i=0;i<linhas;i++){
+    for(j=0;j<colunas;j++){
+      if(matriz[i][j] == 'o'){
+        if (conta_vizinhos(i,j) < 2)
+          inserir_celula(i,j,'-');
+        else if (conta_vizinhos(i,j) > 3)
+          inserir_celula(i,j,'-');
+        else
+          inserir_celula(i,j,'o');
+        }
+        else{
+          if (conta_vizinhos(i,j) == 3)
+            inserir_celula(i,j,'o');
+          else
+            inserir_celula(i,j,'-');
+        }
+    }
+  }
  copia_matriz(prox_geracao,matriz);
-
 }
 
 void Matriz::copia_matriz(char matriz1[80][80], char matriz2[80][80]){
   int i,j = 0;
-
-
 
     for(i=0;i<80;i++){
       for(j=0;j<80;j++){
         matriz2[i][j] = matriz1[i][j];
       }
     }
-
-
-
 }

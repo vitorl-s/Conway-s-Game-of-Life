@@ -6,4 +6,4 @@ class Gosper_glider:public Matriz{
   public:
     Gosper_glider();
     ~Gosper_glider();
-}
+};
