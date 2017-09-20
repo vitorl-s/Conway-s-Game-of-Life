@@ -24,8 +24,8 @@ OBS 4 : Na main, foi incluída a biblioteca unistd.h para utilizar a função us
 
 Funcionamento do jogo:  
 
-As células vivas são representadas pelo caractér o , ou seja , 'o' .  
-As células mortas são representadas pelo caractér - , ou seja , '-' .  
+As células vivas são representadas pelo caractere o  
+As células mortas são representadas pelo caractere -    
 
 Regras do Jogo :   
 1) Se uma celula viva tiver menos que duas celulas vivas ao seu redor, ela morre de solidão.  
