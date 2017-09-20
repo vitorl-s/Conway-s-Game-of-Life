@@ -4,6 +4,7 @@
 #include "blinker.hpp"
 #include "gosper_glider_gun.hpp"
 #include <unistd.h>
+#include <stdlib.h>
 
 int main(int argc, char ** argv){
 
@@ -30,6 +31,7 @@ int main(int argc, char ** argv){
   while(i<matriz1.getGeracoes()){
     matriz1.nova_geracao();
     usleep(210000);
+    system("clear");
     matriz1.imprime_matriz();
     i++;
   }
