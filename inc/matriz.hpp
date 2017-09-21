@@ -25,11 +25,13 @@ class Matriz{
     void insere_Colunas(int quantidade_colunas);
     int getColunas();
     int getJogo();
+    int getMatriz(int i, int j);
     void setJogo();
+    void setJogo(int jogo_desejado);
     int getGeracoes();
     void setGeracoes();
     void cria_Matriz();
-    void cria_Matriz(int jogo_desejado);
+    void insere_jogo(int i,int j , char estado);
     int conta_vizinhos(int i , int j);
     void inserir_celula(int i , int j , char estado);
     void nova_geracao();

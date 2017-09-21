@@ -5,8 +5,14 @@ Matriz::Matriz(){
    quantidade_linhas= 1 ;
    quantidade_colunas= 1 ;
    quantidade_geracoes = 1;
-}
 
+   for(int i=0 ; i<80 ; i++){
+     for(int j=0; j<80 ; j++){
+       matriz[i][j] = '-' ;
+     }
+   }
+
+}
 void Matriz::menu(){
   cout<<"Bem-vindo(a) ao Jogo da vida! Selecione um jogo com posicoes pré definidas"
       << " ou configure a sua matriz da forma que quiser!\n\n"
@@ -58,6 +64,10 @@ void Matriz::setJogo(){
   this -> jogo_desejado = jogo_desejado;
 }
 
+void Matriz::setJogo(int jogo_desejado){
+  this -> jogo_desejado = jogo_desejado;
+}
+
 int Matriz::getGeracoes(){
   return quantidade_geracoes;
 }
@@ -79,99 +89,6 @@ void Matriz::cria_Matriz(){
         cin >> matriz[i][j] ;
       }
     }
-  }
-}
-
-void Matriz::cria_Matriz(int jogo_desejado){
-
-    if(jogo_desejado == 4){
-      insere_Linhas(40);
-      insere_Colunas(40);
-    }
-    if(jogo_desejado != 4 && jogo_desejado !=5){
-      insere_Colunas(20);
-      insere_Linhas(20);
-    }
-    int linhas = getLinhas();
-    int colunas = getColunas();
-
-    if(jogo_desejado != 5){
-      for(int i=0 ; i<linhas ; i++){
-        for(int j=0; j<colunas ; j++){
-          matriz[i][j] = '-' ;
-        }
-      }
-    }
-    if(jogo_desejado == 1){
-      matriz[4][4] = 'o';
-      matriz[4][5] = 'o';
-      matriz[5][4] = 'o';
-      matriz[5][5] = 'o';
-      matriz[10][10] = 'o';
-      matriz[10][11] = 'o';
-      matriz[11][10] = 'o';
-      matriz[11][11] = 'o';
-      matriz[10][10] = 'o';
-      matriz[10][11] = 'o';
-      matriz[11][10] = 'o';
-      matriz[11][11] = 'o';
-      matriz[10][10] = 'o';
-      matriz[10][11] = 'o';
-      matriz[11][10] = 'o';
-      matriz[11][11] = 'o';
-  }
-  else if(jogo_desejado == 2){
-    matriz[4][4] = 'o';
-    matriz[4][5] = 'o';
-    matriz[4][6] = 'o';
-    matriz[11][9] = 'o';
-    matriz[11][10] = 'o';
-    matriz[11][11] = 'o';
-  }
-  else if(jogo_desejado == 3){
-    matriz[4][4] = 'o';
-    matriz[5][5] = 'o';
-    matriz[5][6] = 'o';
-    matriz[6][4] = 'o';
-    matriz[6][5] = 'o';
-  }
-  else if(jogo_desejado == 4){
-    matriz[4][0] = 'o';
-    matriz[4][1] = 'o';
-    matriz[5][0] = 'o';
-    matriz[5][1] = 'o';
-    matriz[4][10] = 'o';
-    matriz[5][10] = 'o';
-    matriz[6][10] = 'o';
-    matriz[3][11] = 'o';
-    matriz[7][11] = 'o';
-    matriz[8][12] = 'o';
-    matriz[8][13] = 'o';
-    matriz[2][12] = 'o';
-    matriz[2][13] = 'o';
-    matriz[5][14] = 'o';
-    matriz[7][15] = 'o';
-    matriz[3][15] = 'o';
-    matriz[4][16] = 'o';
-    matriz[5][16] = 'o';
-    matriz[6][16] = 'o';
-    matriz[5][17] = 'o';
-    matriz[2][20] = 'o';
-    matriz[3][20] = 'o';
-    matriz[4][20] = 'o';
-    matriz[2][21] = 'o';
-    matriz[3][21] = 'o';
-    matriz[4][21] = 'o';
-    matriz[1][22] = 'o';
-    matriz[5][22] = 'o';
-    matriz[6][24] = 'o';
-    matriz[5][24] = 'o';
-    matriz[1][24] = 'o';
-    matriz[0][24] = 'o';
-    matriz[2][34] = 'o';
-    matriz[2][35] = 'o';
-    matriz[3][34] = 'o';
-    matriz[3][35] = 'o';
   }
 }
 
@@ -235,6 +152,8 @@ void Matriz::nova_geracao(){
   int colunas = getColunas();
   int j= 0;
   int i= 0;
+
+copia_matriz(matriz,prox_geracao);
   for(i=0;i<linhas;i++){
     for(j=0;j<colunas;j++){
       if(matriz[i][j] == 'o'){
@@ -264,4 +183,8 @@ void Matriz::copia_matriz(char matriz1[80][80], char matriz2[80][80]){
         matriz2[i][j] = matriz1[i][j];
       }
     }
+}
+
+void Matriz::insere_jogo(int i,int j , char estado){
+    matriz[i][j] = estado;
 }
